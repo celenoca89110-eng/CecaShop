@@ -145,7 +145,7 @@ export default function Home() {
       <section className="container px-4 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProducts.map((product) => (
-            <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+            <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onClick={() => router.push(`/product/${product.id}`)}>
               <div className="aspect-video w-full overflow-hidden bg-muted">
                 <img
                   src={product.image}
@@ -179,7 +179,7 @@ export default function Home() {
                   </span>
                 </div>
               </CardContent>
-              <CardFooter>
+              <CardFooter onClick={(e) => e.stopPropagation()}>
                 <Button 
                   className="w-full" 
                   onClick={() => addToCart(product.id)}
